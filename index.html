@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Etiquetando - Micro Serviço</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <nav>
+      <a href="#0" class="logo">
+        <img src="./imagem.png" width="32" height="32">
+      </a>        
+    </nav>
+  </header>
+  
+  <section class="page-content">
+    <form>
+      <fieldset>
+        <legend>Login</legend>
+        <label for="txtservidor">Servidor:</label>
+        <input type="text" id="txtservidor" name="txtservidor" class="bordafina" style="width: 365px;">
+        <div>
+          <row>
+            <col>
+              <label for="txtempresa">Empresa:</label>
+              <input type="text" id="txtempresa" name="txtempresa" class="bordafina" style="width: 20px;">  
+            </col>
+            <col>
+              <label for="txtidmicro">Id Micro Serviço:</label>
+              <input type="text" id="txtidmicro" name="txtidmicro" class="bordafina" style="width: 40px;">  
+            </col>
+            <col>
+              <label for="txttoken">Token:</label>
+              <input type="password" id="txttoken" name="txttoken" class="bordafina" style="width: 80px;">          
+            </col>
+            <col>
+              <button type="button" onclick="conectar()">Entrar</button>
+            </col>
+          </row>
+        </div>
+      </fieldset>
+    </form>
+
+    <fieldset >
+      <legend>Info</legend>
+      <div id="logInfo">
+        <span id="filiais"></span>
+      </div>
+    </fieldset>
+
+    <fieldset >
+      <legend>Log</legend>
+      <div id="logContainer"></div>
+    </fieldset>
+      <!--
+    <fieldset>
+      <legend>Enviar Comando</legend>
+      <div class="modal-body text-center">
+        <label>
+            Comando:
+            <input type="text" id="txtComando">
+        </label>
+        <button type="button" onclick="enviarComando(document.getElementById('txtComando').value)">Enviar</button>
+      </div>
+    </fieldset>
+
+        -->
+
+  </section>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>

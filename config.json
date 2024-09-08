@@ -1,0 +1,11 @@
+{
+  "SERVER_WEBSOCKET": "ws://wirthsistemas.com.br/etiquetando",
+  "SERVER_EMPRESA": 1,
+  "MICRO_SERVICO_ID": 1,
+  "MICRO_SERVICO_SENHA": "tl@blu",
+  "MICRO_SERVICO_DESCRICAO": "TL BLU",
+  "MICRO_SERVICO_USER": "etiquetando_micro_serviço",
+  "BD_CLIENTE_STRING": "Server=172.19.51.33;Database=Softran_Translovato;User Id=consulta;Password=Lovato.16;Port=1433;Connection Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False\r\n",
+  "MICRO_SERVICO_FILIAIS": "6,56",
+  "SERVER": "http://wirthsistemas.com.br/etiquetando"
+}

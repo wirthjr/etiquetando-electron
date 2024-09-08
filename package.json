@@ -1,0 +1,58 @@
+{
+  "name": "etiquetando",
+  "version": "1.0.0",
+  "description": "Etiquetando Micro Serviço",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder build"
+  },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "wirthjr",
+      "repo": "etiquetando-update"
+    }
+  ],
+  "author": "Archo Tech",
+  "license": "ISC",
+  "dependencies": {
+    "electron-updater": "^6.2.1",
+    "mssql": "^10.0.2",
+    "node-fetch": "^2.6.1",
+    "ws": "^8.17.1"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "files": [
+      "eventemitter.js",
+      "config.js",
+      "main.js",
+      "funcoes.js",
+      "index.html",
+      "log.js",
+      "mssql.js",
+      "preload.js",
+      "renderer.js",
+      "sockethandler.js",
+      "styles.css",
+      "etiquetando.ico",
+      "imagem.png",
+      "eventemitter.js"
+    ],
+    "extraFiles": [
+      {
+        "from": "imagem.png",
+        "to": "."
+      }
+    ],
+    "icon": "etiquetando.ico",
+    "win": {
+      "icon": "etiquetando.ico"
+    }
+  }
+}

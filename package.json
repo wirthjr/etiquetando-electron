@@ -12,7 +12,7 @@
     {
       "provider": "github",
       "owner": "wirthjr",
-      "repo": "etiquetando-update"
+      "repo": "etiquetando-electron"
     }
   ],
   "author": "Archo Tech",
@@ -21,6 +21,7 @@
     "electron-updater": "^6.2.1",
     "mssql": "^10.0.2",
     "node-fetch": "^2.6.1",
+    "node-windows": "^1.0.0-beta.8",
     "ws": "^8.17.1"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
   },
   "build": {
     "files": [
+      "service.js",
       "eventemitter.js",
       "config.js",
       "main.js",
@@ -41,10 +43,9 @@
       "sockethandler.js",
       "styles.css",
       "etiquetando.ico",
-      "imagem.png",
-      "eventemitter.js"
+      "imagem.png"
     ],
-    "extraFiles": [
+    "extraResources": [
       {
         "from": "imagem.png",
         "to": "."

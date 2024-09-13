@@ -1,5 +1,8 @@
-const { Console } = require('console');
 const { app, dialog } = require('electron');
+
+let lastConnectionTime = Date.now(); // Armazena o tempo atual em milissegundos
+const CHECK_INTERVAL = 1000 * 60; // Intervalo de verificação de 1 minuto (1000ms)
+const TIMEOUT_LIMIT = 5 * 60 * 1000; // Limite de 5 minutos em milissegundos (300000ms)
 
 try {
   const WebSocket = require('ws');
@@ -222,6 +225,9 @@ try {
       socket = new WebSocket(serverAddress, [], wsOptions);
 
       socket.on('open', () => {
+        console.log("🚪 socket open")
+        lastConnectionTime = Date.now(); // Zera a contagem do tempo ao reconectar
+
         callConfigGet()
           .then(configura => {
             configura.SERVER_WEBSOCKET = serverAddress;
@@ -235,6 +241,7 @@ try {
 
       socket.on('close', (code, reason) => {
         socketEventEmitter.emit('socket-disconnected', code);
+        lastConnectionTime = Date.now(); // Armazena o tempo da desconexão
 
         if (code != 1008) {
           setTimeout(() => {
@@ -253,7 +260,7 @@ try {
 
       socket.on('message', function message(data, isBinary) {
         const texto = isBinary ? data : data.toString();
-
+        
         if (texto.includes("{") && texto.includes(":") && texto.includes("}")) {
           try {
             let dieison = JSON.parse(texto);
@@ -277,7 +284,21 @@ try {
     }
   }
 
-  module.exports = { connectSocket, socketEventEmitter };
+
+// Função para verificar o tempo sem conexão
+function checkConnectionTimeout() {
+  const currentTime = Date.now();
+  const timeElapsed = currentTime - lastConnectionTime;
+  if (timeElapsed >= TIMEOUT_LIMIT) {
+    console.log((TIMEOUT_LIMIT / 1000) + ' minutos sem atividade.')
+    connectSocket();
+  }
+}
+
+// Configura o intervalo de verificação
+setInterval(checkConnectionTimeout, CHECK_INTERVAL);
+
+module.exports = { connectSocket, socketEventEmitter };
 
 } catch (e) {
   console.log("Erro ao carregar socketHandler");
